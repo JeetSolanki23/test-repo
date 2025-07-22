@@ -102,19 +102,6 @@ Preferred communication style: Simple, everyday language.
 3. **Static Serving**: Express serves frontend assets from `dist/public`
 4. **Database**: Production PostgreSQL instance via DATABASE_URL environment variable
 
-### Serverless Deployment Options
-**Platform Support**: Ready for deployment on Vercel, Netlify, Railway, and Render
-- **Vercel**: Uses `vercel.json` configuration with `api/index.ts` serverless handler
-- **Netlify**: Uses `netlify.toml` with Netlify Functions in `netlify/functions/api.ts`
-- **Railway**: Full-stack deployment with integrated PostgreSQL support
-- **Render**: Uses `render.yaml` for web service and database configuration
-
-### Database Providers
-- **Neon**: Serverless PostgreSQL (recommended, 3GB free tier)
-- **Supabase**: PostgreSQL with additional features (500MB free tier)
-- **Railway**: Integrated PostgreSQL service
-- **Render**: Managed PostgreSQL database
-
 ### Environment Configuration
 - **NODE_ENV**: Controls development vs production behavior
 - **DATABASE_URL**: PostgreSQL connection string (required)
@@ -124,11 +111,3 @@ Preferred communication style: Simple, everyday language.
 - **Development Banner**: Automatic Replit development environment detection
 - **Cartographer Plugin**: Development-only Replit tooling integration
 - **Runtime Error Overlay**: Enhanced error reporting in development
-
-### Recent Changes
-- **2025-07-22**: Added comprehensive serverless deployment configurations
-  - Created `vercel.json` for Vercel deployment
-  - Added `api/index.ts` serverless API handler
-  - Created `netlify.toml` and Netlify Functions support
-  - Added `render.yaml` for Render.com deployment
-  - Comprehensive `DEPLOYMENT.md` guide with step-by-step instructions
