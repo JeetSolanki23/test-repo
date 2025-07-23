@@ -3,10 +3,7 @@
   "builds": [
     {
       "src": "server/index.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["dist/**"]
-      }
+      "use": "@vercel/node"
     },
     {
       "src": "package.json",
@@ -26,7 +23,9 @@
       "dest": "dist/public/$1"
     }
   ],
-  "env": {
-    "NODE_ENV": "production"
+  "functions": {
+    "server/index.ts": {
+      "includeFiles": "shared/**"
+    }
   }
 }

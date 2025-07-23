@@ -317,8 +317,12 @@ export class DatabaseStorage implements IStorage {
       .where(eq(users.id, id));
   }
 
-  async getTransactionsByUser(userId: number): Promise<Transaction[]> {
-    return db.select().from(transactions).where(eq(transactions.userId, userId)).orderBy(desc(transactions.date));
+  async getTransactionsByUser(userId: number, limit?: number): Promise<Transaction[]> {
+    const query = db.select().from(transactions).where(eq(transactions.userId, userId)).orderBy(desc(transactions.date));
+    if (limit) {
+      return query.limit(limit);
+    }
+    return query;
   }
 
   async createTransaction(transaction: InsertTransaction & { userId: number }): Promise<Transaction> {
@@ -327,6 +331,12 @@ export class DatabaseStorage implements IStorage {
       .values(transaction)
       .returning();
     return newTransaction;
+  }
+
+  async getTransactionsByCategory(userId: number, categoryId: number): Promise<Transaction[]> {
+    return db.select().from(transactions)
+      .where(and(eq(transactions.userId, userId), eq(transactions.categoryId, categoryId)))
+      .orderBy(desc(transactions.date));
   }
 
   async getBudgetsByUser(userId: number): Promise<Budget[]> {
